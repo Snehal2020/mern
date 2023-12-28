@@ -1,0 +1,9 @@
+.lsection {
+   position: fixed;
+  
+}
+.lsection input{
+    border: 0px;
+    border-bottom: 2px solid rgb(132, 169, 212);
+    width: 100%;
+}
