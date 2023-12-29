@@ -12,7 +12,7 @@ function Login() {
   const loginUser=async(e)=>{
     e.preventDefault();
 
-    const res = await fetch('/login',{
+    const res = await fetch('https://snehalmern.onrender.com/login',{
       method:'POST',
       headers:{
         'content-type':'application/json '
