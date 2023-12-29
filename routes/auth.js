@@ -98,6 +98,9 @@ router.post('/login',async(req,res)=>{
 router.get('/about',Authenticate,(req, res) => {
     res.send(req.rootUser)
    })
+router.get('/call',(req, res) => {
+    res.send("i am snehal")
+   })
 router.get('/logout',Authenticate,(req, res) => {
     res.clearCookie('Mytoken',{path:'/'})
     res.send(req.rootUser)
