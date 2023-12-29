@@ -9,11 +9,6 @@ const cookieparser = require("cookie-parser")
 app.use(cookieparser())
 app.use(require('./routes/auth'))   //link a router file auth.js
 
-
-app.get('/', (req, res) => {
-    res.send('hello world')
-  })
-
 //hero
 if(process.env.NODE_ENV==="production"){
   app.use(express.static("frontend/build"))

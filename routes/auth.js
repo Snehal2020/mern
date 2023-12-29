@@ -10,7 +10,7 @@ const Authenticate = require('../middleware/authenticate');
 router.use(express.json())
 router.use(cookieparser())
 router.get('/', (req, res) => {
-   
+   res.send("I am home page")
 })
 
 //----------------------------------Promise------------------------------ */
