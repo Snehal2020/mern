@@ -52,4 +52,64 @@
                             this.save()                                   save in userschema doc
                             return gtoken                                 return token
 
-    in login post rout before login successfull call the above function
+    in login post rout before login successfull call the above function save the token in a variable
+    then    res.cookie("Mytoken",token, {
+                    expires: new Date(Date.now() + 9000000),
+                    httpOnly: true,
+                })
+
+--------------------------------------------------------------------------------------------
+
+12.    Now to protect about rout we use middleware
+       router.get('/about',authenticate,(res,req))
+
+       create authenticate function
+
+       onst Authenticate=async (req,res,next)=>{
+    try {
+      //read the token from cookies   
+      //verify token with SECRET_KEY and store userdetails in a var
+        const rootUser=await User.findOne({_id:verifyToken._id})
+        if(!rootUser){
+            throw new Error("User not found")
+        }
+        req.rootUser=rootUser;
+        req.token=token;
+        req.userId=rootUser._id;
+
+        next()
+    } catch (error) {}
+}
+-----------------------------------------------------------------------------------------------
+13.  *********************  Client Side   ******************************
+----------------------------------------------------------------------------------
+   create react app
+   create components
+   in app.js-use routes  ||  index-use browser router  ||  navbar-use Link
+---------------------------------------------------------------------------------------
+14. __________________Registration __________________
+   create form
+   create  a useState for user and provide "" value to all fields 
+   create two 
+   1) function handleIN -Onchange
+      setUser({...user,[name]:value})    target the event store in name and value variable
+   2) handleOP-onPost
+        e.preventDefault();
+    const {name,email,phone,work,password,cpassword}=user;
+    const res1 = await fetch('/register',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json '
+      },
+      body:JSON.stringify({
+        name,email,phone,work,password,cpassword
+      })
+    })
+   // fetch the api rout  with the attributes-method,headers,body
+    const data=await res1.json()
+    if(res1.status===402 || !data){
+      window.alert("Invalid Registration")
+   else  navigate to login
+
+  ___________________- Login ____________________
+  same as Registration but only for email and password

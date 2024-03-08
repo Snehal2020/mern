@@ -1,6 +1,7 @@
 import React,{useContext, useState} from 'react'
 import {Link,useNavigate} from 'react-router-dom'
 import { userContext } from '../App';
+import cors from 'cors'
 
 function Login() {
 
@@ -12,7 +13,7 @@ function Login() {
   const loginUser=async(e)=>{
     e.preventDefault();
 
-    const res = await fetch('https://snehalmern.onrender.com/login',{
+    const res = await fetch('/login',{
       method:'POST',
       headers:{
         'content-type':'application/json '
@@ -73,7 +74,7 @@ function Login() {
 
                   <a className="small text-muted" href="#!">Forgot password?</a>
                   <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <Link to="/register"
-                      style={{color: '#393f81'}}>Register__here</Link></p>
+                      style={{color: '#393f81'}}>Register---here</Link></p>
                   <a href="#!" className="small text-muted">Terms of use.</a>
                   <a href="#!" className="small text-muted">Privacy policy</a>
                 </form>

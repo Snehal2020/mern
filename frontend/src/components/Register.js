@@ -13,7 +13,7 @@ function Register() {
   const postData=async(e)=>{
     e.preventDefault();
     const {name,email,phone,work,password,cpassword}=user;
-    const res1 = await fetch('/register',{
+    const res1 = await fetch('https://snehalmern.onrender.com/register',{
       method:'POST',
       headers:{
         'content-type':'application/json '
